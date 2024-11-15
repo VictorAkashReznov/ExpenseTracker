@@ -1,0 +1,2 @@
+mongodb+srv://<db_username>:<db_password>@cluster0.yvsdl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+mongodb+srv://mongo2024:mongo2024@cluster0.yvsdl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
