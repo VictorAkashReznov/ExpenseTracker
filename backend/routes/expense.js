@@ -6,7 +6,6 @@ const Expense = require("../models/Expense");
 
 router.post("/", async (req, res) => {
   try {
-    console.log("hello india\n", req.body);
     const newExpense = await Expense(req.body);
     const expense = newExpense.save();
     res.status(201).json(expense);
