@@ -6,9 +6,10 @@ dotenv.config();
 const expenseEmail = async () => {
   const expenses = await Expense.find();
   const totalExpense = expenses.reduce((acc, expense) => {
-    return acc + expense.value, 0;
-  });
+    return acc + expense.value;
+  }, 0);
   if (totalExpense > 10000) {
+    console.log(" this is working condition is achived", totalExpense);
     let messageOption = {
       from: process.env.EMAIL,
       to: process.env.ADMIN_EMAIL,
