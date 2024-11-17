@@ -22,5 +22,5 @@ const run = () => {
 };
 run();
 app.listen(process.env.PORT, () => {
-  console.log(`server is running on ${process.env.PORT}`);
+  console.log(`Background services is running on ${process.env.PORT}`);
 });
