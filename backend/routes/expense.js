@@ -6,11 +6,12 @@ const Expense = require("../models/Expense");
 
 router.post("/", async (req, res) => {
   try {
-    const newExpense = await Expense(req.body);
-    const expense = newExpense.save();
+    const newExpense = new Expense(req.body);
+    const expense = await newExpense.save();
     res.status(201).json(expense);
   } catch (error) {
-    res.status(500).json(error);
+    console.error("Error creating expense:", error);
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -21,7 +22,8 @@ router.get("/", async (req, res) => {
     const expenses = await Expense.find().sort({ createdAt: -1 });
     res.status(200).json({ expenses });
   } catch (error) {
-    res.status(500).json(error);
+    console.error("Error fetching expenses:", error);
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -45,9 +47,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     await Expense.findByIdAndDelete(req.params.id);
-    res.status(201).json("deleted successfully");
+    res.status(200).json({ message: "Expense deleted successfully" });
   } catch (error) {
-    res.status(500).json(error);
+    console.error("Error deleting expense:", error);
+    res.status(500).json({ message: error.message });
   }
 });
 
